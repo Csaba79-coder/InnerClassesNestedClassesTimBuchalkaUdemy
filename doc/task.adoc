@@ -1,0 +1,7 @@
+= Good to know:
+
+image::image-2022-03-16-15-07-27-850.png[]
+
+image::.gitignore[]
+
+image::image-2022-03-16-15-06-53-335.png[]
