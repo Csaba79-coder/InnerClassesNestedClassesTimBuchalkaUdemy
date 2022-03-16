@@ -1,0 +1,87 @@
+package innerclass;
+
+import java.util.ArrayList;
+
+public class Gearbox {
+
+    private ArrayList<Gear> gears;
+    private int maxGear;
+    private int currentGear = 0;
+
+    public Gearbox(int maxGear) {
+        this.maxGear = maxGear;
+        this.gears = new ArrayList<Gear>();
+        Gear neutral = new Gear(0, 0.0);
+        this.gears.add(neutral);
+    }
+
+    // this is the inner class!!!
+    public class Gear {
+        private int gearNumber;
+        private double ratio;
+
+        public Gear(int gearNumber, double ratio) {
+            this.gearNumber = gearNumber;
+            this.ratio = ratio;
+        }
+
+        public double driveSpeed(int revs) {
+            return (revs * this.ratio);
+        }
+
+        public int getGearNumber() {
+            return gearNumber;
+        }
+
+        public void setGearNumber(int gearNumber) {
+            this.gearNumber = gearNumber;
+        }
+
+        public double getRatio() {
+            return ratio;
+        }
+
+        public void setRatio(double ratio) {
+            this.ratio = ratio;
+        }
+    }
+
+    public ArrayList<Gear> getGears() {
+        return gears;
+    }
+
+    public void setGears(ArrayList<Gear> gears) {
+        this.gears = gears;
+    }
+
+    public int getMaxGear() {
+        return maxGear;
+    }
+
+    public void setMaxGear(int maxGear) {
+        this.maxGear = maxGear;
+    }
+
+    public int getCurrentGear() {
+        return currentGear;
+    }
+
+    public void setCurrentGear(int currentGear) {
+        this.currentGear = currentGear;
+    }
+}
+
+In the main:
+
+package innerclass;
+
+public class GearMain {
+
+    public static void main(String[] args) {
+        Gearbox mcLaren = new Gearbox(6);
+        // Gear is an inner Class to Gearbox
+        // Outer class is Gearbox, inner class is Gear
+        Gearbox.Gear first = mcLaren.new Gear(1, 12.3); // this is the only syntax works!! the rest combination not!
+        System.out.println(first.driveSpeed(1000));
+    }
+}
